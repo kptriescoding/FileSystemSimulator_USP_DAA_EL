@@ -1,6 +1,8 @@
 package Models;
 
-public class File {
-    int parentINodeNumber;
-    String contents;
+import java.io.Serializable;
+
+public class File implements Serializable {
+    public int parentINodeNumber;
+    public String contents;
 }
