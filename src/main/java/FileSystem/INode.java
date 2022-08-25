@@ -4,9 +4,9 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class INode implements Serializable {
-    public int iNodeNumber,fileSize,mode,permision,linkNumber;
-    public Date created,modified,accesssed;
-    public int fileType;
-    public Object fileReference;
-    public String owner;
+    private int iNodeNumber,fileSize,mode,permision,linkNumber;
+    private Date created,modified,accesssed;
+    private int fileType;
+    private Object fileReference;
+    private String owner;
 }

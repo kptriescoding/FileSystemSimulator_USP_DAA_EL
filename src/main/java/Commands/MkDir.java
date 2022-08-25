@@ -16,8 +16,6 @@ public class MkDir {
 
     public boolean validate(){
         if(names.contains(dirname))
-        return false;
-        if(dirname.contains("."))
             return false;
         return true;
     }
