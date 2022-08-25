@@ -16,9 +16,11 @@ public class Directory implements Serializable {
         int inodeNumber=superNode.getNumberofNodes();
         DirContents contents1=new DirContents();
         content.setInodeNumber(inodeNumber);
+        content.setFileType(1);
         this.contents.add(content);
         contents1.setName("..");
         contents1.setInodeNumber(parentINodeNumber);
+        contents1.setFileType(1);
         this.contents.add(contents1);
     }
 

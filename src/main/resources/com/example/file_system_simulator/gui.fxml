@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.Font?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.file_system_simulator.GuiController"
+            prefHeight="400.0" prefWidth="600.0">
+    <padding>
+        <Insets bottom="200.0" left="300.0" right="300.0" top="200.0"/>
+    </padding>
+    <GridPane fx:id="gridPane" hgap="10" vgap="10" xmlns:fx="http://javafx.com/fxml">
+
+    </GridPane>
+</AnchorPane>

@@ -7,12 +7,15 @@ public class Commands {
     private LS ls;
     private MKDIR mkdir;
     private String command;
+    private TOUCH touch;
     private char[] cmds;
     private String fileDirectoryName;
     public Commands(){
         cd=new CD();
         ls=new LS();
         mkdir=new MKDIR();
+        touch=new TOUCH();
+
     }
     public void run(String cmd, SuperNode superNode){
         cmd=cmd.trim();
@@ -26,6 +29,7 @@ public class Commands {
             case "mkdir" -> mkdir.execute(superNode, superNode.getCurrentNode(), fileDirectoryName);
             case "cd" -> cd.execute(superNode, fileDirectoryName);
             case "ls" -> ls.execute(superNode, superNode.getCurrentNode());
+            case "touch"-> touch.execute(superNode,superNode.getCurrentNode(),fileDirectoryName);
             default -> System.out.println("Error command");
         }
     }
