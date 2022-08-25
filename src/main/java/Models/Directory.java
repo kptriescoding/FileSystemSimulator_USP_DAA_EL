@@ -1,32 +1,27 @@
 package Models;
 
+import Database.SqlCommands;
 import FileSystem.SuperNode;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Directory implements Serializable {
-    private int parentINodeNumber;
     private  ArrayList<DirContents>contents;
     public Directory(SuperNode superNode,int parentINodeNumber){
-        this.parentINodeNumber=parentINodeNumber;
+        superNode.updateSuperNode();
         this.contents=new ArrayList<>();
         DirContents content=new DirContents();
         content.setName(".");
-        content.setInodeNumber(superNode.getNumberofNodes()+1);
+        int inodeNumber=superNode.getNumberofNodes();
+        DirContents contents1=new DirContents();
+        content.setInodeNumber(inodeNumber);
         this.contents.add(content);
-        content.setName("..");
-        content.setInodeNumber(parentINodeNumber);
-        this.contents.add(content);
+        contents1.setName("..");
+        contents1.setInodeNumber(parentINodeNumber);
+        this.contents.add(contents1);
     }
 
-    public int getParentINodeNumber() {
-        return parentINodeNumber;
-    }
-
-    public void setParentINodeNumber(int parentINodeNumber) {
-        this.parentINodeNumber = parentINodeNumber;
-    }
 
     public ArrayList<DirContents> getContents() {
         return contents;

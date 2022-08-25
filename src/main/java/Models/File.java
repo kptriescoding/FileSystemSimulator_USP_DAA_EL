@@ -1,24 +1,20 @@
 package Models;
+import FileSystem.SuperNode;
 
 import java.io.Serializable;
 
 public class File implements Serializable {
-    private int parentINodeNumber;
-    private String contents;
-
-    public int getParentINodeNumber() {
-        return parentINodeNumber;
-    }
-
-    public void setParentINodeNumber(int parentINodeNumber) {
-        this.parentINodeNumber = parentINodeNumber;
+    private String content;
+    public File(SuperNode superNode){
+        superNode.updateSuperNode();
+        this.content="";
     }
 
     public String getContents() {
-        return contents;
+        return content;
     }
 
     public void setContents(String contents) {
-        this.contents = contents;
+        this.content = contents;
     }
 }

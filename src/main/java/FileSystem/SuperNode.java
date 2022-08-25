@@ -3,17 +3,23 @@ package FileSystem;
 import Database.SqlCommands;
 import Models.Directory;
 
-public class SuperNode {
+import java.io.Serializable;
+
+public class SuperNode implements Serializable {
     public SuperNode(){
         SqlCommands sql=new SqlCommands();
         SuperNode superNode=(SuperNode) sql.retrieveObject(1);
         if(superNode==null){
             this.currentNode=2;
-            this.numberofNodes=1;
+            this.numberofNodes=2;
             Directory root= new Directory(this,1);
-            this.numberofNodes++;
-            sql.storeObject(this);
-            sql.storeObject(root);
+            INode iNode=new INode(this,1,root);
+            sql.storeObject(this,1);
+            sql.storeObject(iNode,2);
+        }
+        else{
+            this.currentNode=superNode.getCurrentNode();
+            this.numberofNodes= superNode.getNumberofNodes();
         }
     }
     public void updateSuperNode(){

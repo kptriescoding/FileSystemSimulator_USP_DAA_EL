@@ -9,10 +9,8 @@ import Models.File;
 
 public class SqlCommands {
     private final Connection conn;
-    private int nextInodeNumber;
     public SqlCommands(){
         try {
-            nextInodeNumber=0;
             Connection con = DriverManager.getConnection(
                     "jdbc:mysql://localhost:3306/",
                     "kptries", "password");
@@ -28,7 +26,7 @@ public class SqlCommands {
             throw new RuntimeException(e);
         }
     }
-    public int storeObject(Object ob){
+    public int storeObject(Object ob,int inodeNumber){
         byte[] data;
         try {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -40,16 +38,15 @@ public class SqlCommands {
             data = baos.toByteArray();
             Statement st = conn.createStatement();
             PreparedStatement stmt = conn.prepareStatement("INSERT INTO INodeTable(INode,File) VALUES (?,?)");
-            stmt.setInt(1, nextInodeNumber+1);
+            stmt.setInt(1, inodeNumber);
             stmt.setObject(2,data);
             stmt.executeUpdate();
-            nextInodeNumber++;
-            return nextInodeNumber;
+            return inodeNumber;
         }
         catch (IOException | SQLException e) {
             System.out.println("" + e);
         }
-        return nextInodeNumber;
+        return -1;
     }
     public void UpdateObject(Object ob,int INodeNumber){
         byte[] data;
@@ -65,7 +62,6 @@ public class SqlCommands {
             PreparedStatement stmt = conn.prepareStatement("UPDATE INodeTable SET File=? WHERE INode="+INodeNumber);
             stmt.setObject(1, data);
             stmt.executeUpdate();
-            nextInodeNumber++;
         }
         catch (IOException | SQLException e) {
             System.out.println("" + e);

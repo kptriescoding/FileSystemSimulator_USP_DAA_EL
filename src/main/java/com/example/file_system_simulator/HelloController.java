@@ -1,15 +1,17 @@
 package com.example.file_system_simulator;
 
+import Commands.Commands;
+import FileSystem.SuperNode;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.text.Text;
 
 public class HelloController {
+    private Commands commands =new Commands();
+    private SuperNode superNode=new SuperNode();
     @FXML
     private Label welcomeText;
 
@@ -22,13 +24,11 @@ public class HelloController {
 
     @FXML
     protected void onTextClick(){
-        textField.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent event) {
-                if(event.getCode().equals(KeyCode.ENTER)){
-                    String command=textField.getText();
-                    System.out.println(command);
-                }
+        textField.setOnKeyPressed(event -> {
+            if(event.getCode().equals(KeyCode.ENTER)) {
+                String command = textField.getText();
+                System.out.println(command);
+                commands.run(command,superNode);
             }
         });
     }
