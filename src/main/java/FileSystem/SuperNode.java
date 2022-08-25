@@ -12,7 +12,7 @@ public class SuperNode implements Serializable {
         if(superNode==null){
             this.currentNode=2;
             this.numberofNodes=2;
-            Directory root= new Directory(this,1);
+            Directory root= new Directory(this,2);
             INode iNode=new INode(this,1,root);
             sql.storeObject(this,1);
             sql.storeObject(iNode,2);

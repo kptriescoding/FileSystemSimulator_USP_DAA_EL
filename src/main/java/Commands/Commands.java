@@ -17,7 +17,7 @@ public class Commands {
         touch=new TOUCH();
 
     }
-    public void run(String cmd, SuperNode superNode){
+    public String run(String cmd, SuperNode superNode){
         cmd=cmd.trim();
         String[] split = cmd.split(" ");
         command = split[0];
@@ -26,14 +26,27 @@ public class Commands {
             char[] cmds = (split[1].substring(1)).toCharArray();
         }
         switch (command) {
-            case "mkdir" -> mkdir.execute(superNode, superNode.getCurrentNode(), fileDirectoryName);
-            case "cd" -> cd.execute(superNode, fileDirectoryName);
-            case "ls" -> ls.execute(superNode, superNode.getCurrentNode());
-            case "touch"-> touch.execute(superNode,superNode.getCurrentNode(),fileDirectoryName);
-            default -> System.out.println("Error command");
+            case "mkdir" -> {
+                return mkdir.execute(superNode, superNode.getCurrentNode(), fileDirectoryName);
+            }
+            case "cd" -> {
+                return cd.execute(superNode, fileDirectoryName);
+            }
+            case "ls" -> {
+                return ls.execute(superNode, superNode.getCurrentNode());
+            }
+            case "touch" -> {
+                return touch.execute(superNode,superNode.getCurrentNode(),fileDirectoryName);
+            }
+            default -> {
+                return "Error command";
+            }
         }
-    }
 
+    }
+    public String getPrevCommand(){
+        return this.command;
+    }
 
 
 }

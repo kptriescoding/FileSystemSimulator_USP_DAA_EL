@@ -7,13 +7,15 @@ import Models.DirContents;
 import Models.Directory;
 
 public class LS {
-    public void execute(SuperNode superNode,int parentInodeNumber){
+    public String execute(SuperNode superNode,int parentInodeNumber){
         SqlCommands sql=new SqlCommands();
+        StringBuilder s= new StringBuilder();
         INode inode= (INode) sql.retrieveObject(parentInodeNumber);
         Directory d=(Directory)inode.getFileReference();
         for(DirContents dirContent:d.getContents()){
-            System.out.print(dirContent.getName()+" ");
+            s.append(dirContent.getName()).append(" ");
         }
-        System.out.println();
+        s.append("\n");
+        return String.valueOf(s);
     }
 }

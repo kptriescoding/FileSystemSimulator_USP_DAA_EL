@@ -16,7 +16,9 @@ public class GuiController {
     @FXML
     private GridPane gridPane;
     public void updateGui(){
-        gridPane.getChildren().removeAll();
+        if (gridPane.getChildren().size() > 0) {
+            gridPane.getChildren().subList(0, gridPane.getChildren().size()).clear();
+        }
     SqlCommands sql=new SqlCommands();
     INode iNode=(INode) sql.retrieveObject(FileSystem.superNode.getCurrentNode());
     Directory curDir= (Directory) iNode.getFileReference();

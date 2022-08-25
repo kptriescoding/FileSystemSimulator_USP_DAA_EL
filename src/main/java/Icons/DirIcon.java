@@ -3,6 +3,7 @@ package Icons;
 import FileSystem.INode;
 import Models.Directory;
 import javafx.scene.control.Button;
+import javafx.scene.control.ContentDisplay;
 import javafx.scene.image.ImageView;
 
 public class DirIcon extends Button {
@@ -21,6 +22,7 @@ public class DirIcon extends Button {
 
         setOnMousePressed(event -> setStyle(STYLE_PRESSED));
         setOnMouseReleased(event -> setStyle(STYLE_NORMAL));
+        setContentDisplay(ContentDisplay.TOP);
     }
 
 }

@@ -2,6 +2,7 @@ package Icons;
 
 import FileSystem.INode;
 import javafx.scene.control.Button;
+import javafx.scene.control.ContentDisplay;
 import javafx.scene.image.ImageView;
 
 public class FileIcon extends Button {
@@ -20,6 +21,7 @@ public class FileIcon extends Button {
 
         setOnMousePressed(event -> setStyle(STYLE_PRESSED));
         setOnMouseReleased(event -> setStyle(STYLE_NORMAL));
+        setContentDisplay(ContentDisplay.TOP);
     }
 
 }

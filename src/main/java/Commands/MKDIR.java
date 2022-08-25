@@ -19,7 +19,7 @@ public class MKDIR {
         }
         return true;
     }
-    public void execute(SuperNode superNode,int parentInodeNumber,String name){
+    public String execute(SuperNode superNode,int parentInodeNumber,String name){
         SqlCommands sql=new SqlCommands();
         INode inode= (INode) sql.retrieveObject(parentInodeNumber);
         Directory d=(Directory)inode.getFileReference();
@@ -33,10 +33,10 @@ public class MKDIR {
             d.addContents(content);
             inode.setFileReference(d);
             sql.UpdateObject(inode,parentInodeNumber);
-            System.out.println("Directory Stored Successfully");
+            return "Directory Stored Successfully";
         }
         else{
-            System.out.println("Directory/File Already exists");
+            return "Directory/File Already exists";
         }
 
     }

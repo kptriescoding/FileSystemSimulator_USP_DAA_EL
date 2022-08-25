@@ -18,7 +18,7 @@ public class TOUCH {
         }
         return true;
     }
-    public void execute(SuperNode superNode, int parentInodeNumber, String name){
+    public String execute(SuperNode superNode, int parentInodeNumber, String name){
         SqlCommands sql=new SqlCommands();
         INode inode= (INode) sql.retrieveObject(parentInodeNumber);
         Directory d=(Directory)inode.getFileReference();
@@ -32,10 +32,10 @@ public class TOUCH {
             d.addContents(content);
             inode.setFileReference(d);
             sql.UpdateObject(inode,parentInodeNumber);
-            System.out.println("File Added Successfully");
+            return "File Added Successfully";
         }
         else{
-            System.out.println("Directory/File Already exists");
+            return "Directory/File Already exists";
         }
 
     }
