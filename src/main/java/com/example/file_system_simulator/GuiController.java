@@ -7,7 +7,6 @@ import Icons.FileIcon;
 import Models.DirContents;
 import Models.Directory;
 import javafx.fxml.FXML;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 
 import java.util.Objects;
