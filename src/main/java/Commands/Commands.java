@@ -8,6 +8,7 @@ public class Commands {
     private MKDIR mkdir;
     private String command;
     private TOUCH touch;
+    private RMDIR rmdir;
     private char[] cmds;
     private String fileDirectoryName;
     public Commands(){
@@ -15,7 +16,7 @@ public class Commands {
         ls=new LS();
         mkdir=new MKDIR();
         touch=new TOUCH();
-
+        rmdir=new RMDIR();
     }
     public String run(String cmd, SuperNode superNode){
         cmd=cmd.trim();
@@ -27,7 +28,7 @@ public class Commands {
         }
         switch (command) {
             case "mkdir" -> {
-                return mkdir.execute(superNode, superNode.getCurrentNode(), fileDirectoryName);
+                return mkdir.execute(superNode, fileDirectoryName);
             }
             case "cd" -> {
                 return cd.execute(superNode, fileDirectoryName);
@@ -36,7 +37,10 @@ public class Commands {
                 return ls.execute(superNode, superNode.getCurrentNode());
             }
             case "touch" -> {
-                return touch.execute(superNode,superNode.getCurrentNode(),fileDirectoryName);
+                return touch.execute(superNode,fileDirectoryName);
+            }
+            case "rmdir"->{
+                return rmdir.execute(superNode,fileDirectoryName);
             }
             default -> {
                 return "Error command";

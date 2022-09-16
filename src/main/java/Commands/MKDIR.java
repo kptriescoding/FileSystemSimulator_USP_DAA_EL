@@ -9,7 +9,7 @@ import Models.Directory;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class MKDIR {
+public class MKDIR extends RecursiveSearch{
     
 
     private boolean validate(ArrayList<DirContents>dirContents,String dirname){
@@ -19,12 +19,19 @@ public class MKDIR {
         }
         return true;
     }
-    public String execute(SuperNode superNode,int parentInodeNumber,String name){
+    public String execute(SuperNode superNode,String name){
         SqlCommands sql=new SqlCommands();
-        INode inode= (INode) sql.retrieveObject(parentInodeNumber);
+        int inodeNumber=tracePath(superNode,name);
+        String[] dirs = name.split("/");
+        if(dirs.length>0) name=dirs[dirs.length-1];
+        if(inodeNumber==-1||inodeNumber==-2){
+            return error;
+        }
+        INode inode= (INode) sql.retrieveObject(inodeNumber);
         Directory d=(Directory)inode.getFileReference();
         if(validate(d.getContents(),name)) {
-            Directory dir = new Directory(superNode, parentInodeNumber);
+            Directory dir = new Directory(superNode,inodeNumber);
+            dir.setName(name);
             INode iNode = new INode(superNode, 1, dir);
             DirContents content = new DirContents();
             content.setName(name);
@@ -32,7 +39,7 @@ public class MKDIR {
             content.setFileType(1);
             d.addContents(content);
             inode.setFileReference(d);
-            sql.UpdateObject(inode,parentInodeNumber);
+            sql.UpdateObject(inode,inodeNumber);
             return "Directory Stored Successfully";
         }
         else{

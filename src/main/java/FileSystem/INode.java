@@ -7,6 +7,7 @@ import java.util.Date;
 
 public class INode implements Serializable {
     public INode(SuperNode  superNode,int fileType,Object fileReference){
+        superNode.updateSuperNode();
         this.iNodeNumber=superNode.getNumberofNodes();
         this.fileType=fileType;
         this.fileReference=fileReference;

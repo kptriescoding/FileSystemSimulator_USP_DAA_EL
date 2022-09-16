@@ -5,8 +5,20 @@ import java.io.Serializable;
 
 public class File implements Serializable {
     private String content;
+    private String name;
+
+    public String toString() {
+        return name;
+    }
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public File(SuperNode superNode){
-        superNode.updateSuperNode();
         this.content="";
     }
 

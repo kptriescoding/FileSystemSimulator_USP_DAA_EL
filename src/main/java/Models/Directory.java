@@ -8,8 +8,22 @@ import java.util.ArrayList;
 
 public class Directory implements Serializable {
     private  ArrayList<DirContents>contents;
-    public Directory(SuperNode superNode,int parentINodeNumber){
-        superNode.updateSuperNode();
+    private String name;
+
+    @Override
+    public String toString() {
+        return name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Directory(SuperNode superNode, int parentINodeNumber){
         this.contents=new ArrayList<>();
         DirContents content=new DirContents();
         content.setName(".");
@@ -22,6 +36,11 @@ public class Directory implements Serializable {
         contents1.setInodeNumber(parentINodeNumber);
         contents1.setFileType(1);
         this.contents.add(contents1);
+        DirContents contents2=new DirContents();
+        contents2.setInodeNumber(2);
+        contents2.setFileType(1);
+        contents2.setName("/");
+        this.contents.add(contents2);
     }
 
 
@@ -31,6 +50,9 @@ public class Directory implements Serializable {
 
     public void addContents(DirContents content) {
         this.contents.add(content);
+    }
+    public void removeContent(DirContents content){
+        this.contents.remove(content);
     }
 
 }

@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import Models.*;
 import Models.File;
 
+import javax.net.ssl.SSLException;
+
 public class SqlCommands {
     private final Connection conn;
     public SqlCommands(){
@@ -84,6 +86,15 @@ public class SqlCommands {
             System.out.println("" + e);
         }
         return null;
+    }
+    public void removeObject(int InodeNumber){
+        try {
+            Statement st = conn.createStatement();
+            st.executeUpdate("DELETE FROM INodeTable WHERE INode=" + InodeNumber);
+        }
+        catch (SQLException e){
+            System.out.println(""+e);
+        }
     }
 //    public static void main(String[] args) {
 //        File f=new File();

@@ -23,7 +23,7 @@ public class GuiController {
     Directory curDir= (Directory) iNode.getFileReference();
     int i=0,j=0;
     for(DirContents dirContents:curDir.getContents()){
-        if(Objects.equals(dirContents.getName(), ".") || Objects.equals(dirContents.getName(), ".."))continue;
+        if(Objects.equals(dirContents.getName(), ".") || Objects.equals(dirContents.getName(), "..")||Objects.equals(dirContents.getName(),"/"))continue;
         if(dirContents.getFileType()==1){
             gridPane.add(new DirIcon(iNode,dirContents.getName()),j,i);
         }

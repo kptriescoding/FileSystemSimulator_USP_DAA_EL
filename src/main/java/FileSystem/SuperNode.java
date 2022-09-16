@@ -11,21 +11,24 @@ public class SuperNode implements Serializable {
         SuperNode superNode=(SuperNode) sql.retrieveObject(1);
         if(superNode==null){
             this.currentNode=2;
-            this.numberofNodes=2;
+            this.numberofNodes=1;
             Directory root= new Directory(this,2);
-            INode iNode=new INode(this,1,root);
+            root.setName("/");
+            new INode(this,1,root);
             sql.storeObject(this,1);
-            sql.storeObject(iNode,2);
         }
         else{
             this.currentNode=superNode.getCurrentNode();
             this.numberofNodes= superNode.getNumberofNodes();
         }
     }
-    public void updateSuperNode(){
+    public void saveSuperNode(){
         SqlCommands sql=new SqlCommands();
-        numberofNodes=numberofNodes+1;
         sql.UpdateObject(this,1);
+    }
+    public void updateSuperNode(){
+        numberofNodes=numberofNodes+1;
+        this.saveSuperNode();
     }
     private int currentNode;
     private int numberofNodes;

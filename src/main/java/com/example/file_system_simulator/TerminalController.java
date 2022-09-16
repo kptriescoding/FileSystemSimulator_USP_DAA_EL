@@ -7,6 +7,8 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
+import java.util.Objects;
+
 public class TerminalController {
 
     @FXML
@@ -19,6 +21,10 @@ public class TerminalController {
         textField.setOnKeyPressed(event -> {
             if(event.getCode().equals(KeyCode.ENTER)) {
                 String command = textField.getText();
+                if(Objects.equals(command, "clear")){
+                    clearTerminal();
+                    return;
+                }
                 vBox.getChildren().add(vBox.getChildren().size()-1,new Text("kptries@kptries-IdeaPad-5-15ITL05-Ua:"+command));
                 String s="\n"+FileSystem.commands.run(command,FileSystem.superNode);
                 vBox.getChildren().add(vBox.getChildren().size()-1,new Text(s));
@@ -26,5 +32,8 @@ public class TerminalController {
                 controller.updateGui();
             }
         });
+    }
+    public void clearTerminal(){
+        vBox.getChildren().removeAll();
     }
 }

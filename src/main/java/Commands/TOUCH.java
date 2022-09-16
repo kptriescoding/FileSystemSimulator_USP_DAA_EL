@@ -10,7 +10,7 @@ import Models.File;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class TOUCH {
+public class TOUCH extends RecursiveSearch{
     private boolean validate(ArrayList<DirContents> dirContents, String dirname){
         for(DirContents dirContent:dirContents) {
             if(Objects.equals(dirContent.getName(), dirname))
@@ -18,12 +18,19 @@ public class TOUCH {
         }
         return true;
     }
-    public String execute(SuperNode superNode, int parentInodeNumber, String name){
+    public String execute(SuperNode superNode, String name){
         SqlCommands sql=new SqlCommands();
-        INode inode= (INode) sql.retrieveObject(parentInodeNumber);
+        int inodeNumber=tracePath(superNode,name);
+        String[] dirs = name.split("/");
+        if(dirs.length>0) name=dirs[dirs.length-1];
+        if(inodeNumber==-1||inodeNumber==-2){
+            return error;
+        }
+        INode inode= (INode) sql.retrieveObject(inodeNumber);
         Directory d=(Directory)inode.getFileReference();
         if(validate(d.getContents(),name)) {
             File f= new File(superNode);
+            f.setName(name);
             INode iNode = new INode(superNode, 0,f);
             DirContents content = new DirContents();
             content.setName(name);
@@ -31,7 +38,7 @@ public class TOUCH {
             content.setFileType(0);
             d.addContents(content);
             inode.setFileReference(d);
-            sql.UpdateObject(inode,parentInodeNumber);
+            sql.UpdateObject(inode,inodeNumber);
             return "File Added Successfully";
         }
         else{
