@@ -5,9 +5,6 @@ import FileSystem.INode;
 import FileSystem.SuperNode;
 import Models.DirContents;
 import Models.Directory;
-import javafx.scene.Parent;
-
-import java.util.ArrayList;
 import java.util.Objects;
 
 public class RMDIR extends RecursiveSearch {

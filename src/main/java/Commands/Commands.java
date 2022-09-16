@@ -9,6 +9,7 @@ public class Commands {
     private String command;
     private TOUCH touch;
     private RMDIR rmdir;
+    private RM rm;
     private char[] cmds;
     private String fileDirectoryName;
     public Commands(){
@@ -17,6 +18,7 @@ public class Commands {
         mkdir=new MKDIR();
         touch=new TOUCH();
         rmdir=new RMDIR();
+        rm=new RM();
     }
     public String run(String cmd, SuperNode superNode){
         cmd=cmd.trim();
@@ -41,6 +43,9 @@ public class Commands {
             }
             case "rmdir"->{
                 return rmdir.execute(superNode,fileDirectoryName);
+            }
+            case "rm"->{
+                return rm.execute(superNode,fileDirectoryName);
             }
             default -> {
                 return "Error command";
