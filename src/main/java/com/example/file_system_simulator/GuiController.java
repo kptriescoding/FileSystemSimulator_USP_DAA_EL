@@ -2,8 +2,8 @@ package com.example.file_system_simulator;
 
 import Database.SqlCommands;
 import FileSystem.INode;
-import Icons.DirIcon;
-import Icons.FileIcon;
+import JavaFxCustomClasses.DirIcon;
+import JavaFxCustomClasses.FileIcon;
 import Models.DirContents;
 import Models.Directory;
 import javafx.fxml.FXML;
@@ -25,10 +25,10 @@ public class GuiController {
     for(DirContents dirContents:curDir.getContents()){
         if(Objects.equals(dirContents.getName(), ".") || Objects.equals(dirContents.getName(), "..")||Objects.equals(dirContents.getName(),"/"))continue;
         if(dirContents.getFileType()==1){
-            gridPane.add(new DirIcon(iNode,dirContents.getName()),j,i);
+            gridPane.add(new DirIcon(iNode,dirContents.getName(),dirContents.getInodeNumber()),j,i);
         }
         else{
-            gridPane.add(new FileIcon(iNode, dirContents.getName()),j,i);
+            gridPane.add(new FileIcon(iNode, dirContents.getName(),dirContents.getInodeNumber()),j,i);
         }
         j++;
         if(j==10){

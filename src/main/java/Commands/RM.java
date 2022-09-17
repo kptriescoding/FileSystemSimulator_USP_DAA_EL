@@ -24,7 +24,10 @@ public class RM extends RecursiveSearch{
             for (DirContents dirContents : d.getContents())
                 if (Objects.equals(dirContents.getName(), name)) {
                     if(dirContents.getFileType()==1)return name+ " is a directory";
-                    sql.removeObject(dirContents.getInodeNumber());
+                    INode iNode=(INode)sql.retrieveObject(dirContents.getInodeNumber());
+                    iNode.setLinkNumber(iNode.getLinkNumber()-1);
+                    sql.UpdateObject(iNode,inodeNumber);
+                   if(iNode.getiNodeNumber()==0) sql.removeObject(dirContents.getInodeNumber());
                     d.removeContent(dirContents);
                     inode.setFileReference(d);
                     sql.UpdateObject(inode,inodeNumber);

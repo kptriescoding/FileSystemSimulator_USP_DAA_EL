@@ -11,6 +11,8 @@ public class RMDIR extends RecursiveSearch {
 
 
     public String execute(SuperNode superNode, String name) {
+        RM rm=new RM();
+        RMDIR rmdir=new RMDIR();
         SqlCommands sql = new SqlCommands();
         int inodeNumber = tracePath(superNode, name);
         String[] dirs = name.split("/");
@@ -26,7 +28,10 @@ public class RMDIR extends RecursiveSearch {
                 INode iNode= (INode) sql.retrieveObject(dirContents.getInodeNumber());
                     Directory dir= (Directory) iNode.getFileReference();
                     if(dir.getContents().size()>3)return "Directory "+name+" is not empty";
-                sql.removeObject(dirContents.getInodeNumber());
+                INode diriNode=(INode)sql.retrieveObject(dirContents.getInodeNumber());
+                diriNode.setLinkNumber(iNode.getLinkNumber()-1);
+                sql.UpdateObject(iNode,inodeNumber);
+                if(iNode.getiNodeNumber()==0) sql.removeObject(dirContents.getInodeNumber());
                 d.removeContent(dirContents);
                 inode.setFileReference(d);
                 sql.UpdateObject(inode,inodeNumber);

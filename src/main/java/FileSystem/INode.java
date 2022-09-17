@@ -11,6 +11,7 @@ public class INode implements Serializable {
         this.iNodeNumber=superNode.getNumberofNodes();
         this.fileType=fileType;
         this.fileReference=fileReference;
+        this.linkNumber=1;
         SqlCommands sql =new SqlCommands();
         sql.storeObject(this,iNodeNumber);
     }
