@@ -38,35 +38,40 @@ public class Commands {
         }
         switch (command) {
             case "mkdir" -> {
+                if(split.length<2)return "Insufficient Parameters";
                 return mkdir.execute(superNode, fileDirectoryPath);
             }
             case "cd" -> {
+                if(split.length<2)return "Insufficient Parameters";
                 return cd.execute(superNode, fileDirectoryPath);
             }
-            case "ls" -> {
-                return ls.execute(superNode, superNode.getCurrentNode());
+            case "ls" ->{
+                if(split.length<2)fileDirectoryPath=".";
+                return ls.execute(superNode,fileDirectoryPath);
             }
             case "touch" -> {
+                if(split.length<2)return "Insufficient Parameters";
                 return touch.execute(superNode, fileDirectoryPath);
             }
             case "rmdir"->{
+                if(split.length<2)return "Insufficient Parameters";
                 return rmdir.execute(superNode, fileDirectoryPath);
             }
             case "rm"->{
+                if(split.length<2)return "Insufficient Parameters";
                 return rm.execute(superNode, fileDirectoryPath);
             }
             case "cat"->{
+                if(split.length<2)return "Insufficient Parameters";
                 return cat.execute(superNode, fileDirectoryPath);
             }
             case "lnk"->{
-                String[] s =cmd.split(" ");
-                if(s.length<3)return "Insufficient Parameters";
-                return lnk.execute(superNode,s[1],s[2]);
+                if(split.length<3)return "Insufficient Parameters";
+                return lnk.execute(superNode,split[1],split[2]);
             }
             case "mv"->{
-                String[] s =cmd.split(" ");
-                if(s.length<3)return "Insufficient Parameters";
-                return mv.execute(superNode,s[1],s[2]);
+                if(split.length<3)return "Insufficient Parameters";
+                return mv.execute(superNode,split[1],split[2]);
             }
             default -> {
                 return "Error command";
