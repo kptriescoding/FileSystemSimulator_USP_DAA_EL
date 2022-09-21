@@ -1,7 +1,9 @@
 package com.example.file_system_simulator;
 
 import Database.SqlCommands;
+import FileSystem.SuperNode;
 import FileSystem.INode;
+
 import JavaFxCustomClasses.DirIcon;
 import JavaFxCustomClasses.FileIcon;
 import Models.DirContents;
@@ -22,10 +24,12 @@ public class GuiController {
     INode iNode=(INode) sql.retrieveObject(FileSystem.superNode.getCurrentNode());
     Directory curDir= (Directory) iNode.getFileReference();
     int i=0,j=0;
+    boolean pathset = false;
     for(DirContents dirContents:curDir.getContents()){
         if(Objects.equals(dirContents.getName(), ".") || Objects.equals(dirContents.getName(), "..")||Objects.equals(dirContents.getName(),"/"))continue;
         if(dirContents.getFileType()==1){
-            gridPane.add(new DirIcon(iNode,dirContents.getName(),dirContents.getInodeNumber()),j,i);
+            gridPane.add(new DirIcon(iNode,dirContents.getName(),dirContents.getInodeNumber(),pathset),j,i);
+            pathset=true;
         }
         else{
             gridPane.add(new FileIcon(iNode, dirContents.getName(),dirContents.getInodeNumber()),j,i);

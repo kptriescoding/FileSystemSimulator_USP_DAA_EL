@@ -18,7 +18,7 @@ public class SuperNode implements Serializable {
             sql.storeObject(this,1);
         }
         else{
-            this.currentNode=superNode.getCurrentNode();
+            this.currentNode=2;
             this.numberofNodes= superNode.getNumberofNodes();
         }
     }
