@@ -25,6 +25,7 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 
 import java.util.Objects;
+import java.util.Stack;
 
 public class TerminalController {
 
@@ -42,9 +43,12 @@ public class TerminalController {
 
     @FXML
     public void initialize() {
-        anotherTextField = textField;textField.setAlignment(Pos.BASELINE_LEFT);
+        anotherTextField = textField;
+        textField.setAlignment(Pos.BASELINE_LEFT);
     }
 
+    public static Stack<String> previousCommands = new Stack<>();
+    static int top = 0;
     @FXML
     protected void onTextClick() {
         textField.setOnKeyPressed(event -> {
@@ -58,6 +62,8 @@ public class TerminalController {
 
                 }
                 System.out.println(textField.getText());
+                previousCommands.push(command);
+                top = previousCommands.size()-1;
 //                vBox.getChildren().add(vBox.getChildren().size() - 1, new Text("kptries@kptries-IdeaPad-5-15ITL05-Ua:" + command));
 
                 vBox.getChildren().add(vBox.getChildren().size() - 1, getTextForPreviousCommand(command));
@@ -73,7 +79,23 @@ public class TerminalController {
                 controller.updateGui();
                 textField.setText("");
             }
+            if(event.getCode().equals(KeyCode.UP)){
+
+                if(top>=0 && top<previousCommands.size())
+                textField.setText(previousCommands.get(top--));
+                if(top>previousCommands.size()-1)top = previousCommands.size()-1;
+                textField.positionCaret(textField.getText().toString().length());
+            }
+            if(event.getCode().equals(KeyCode.DOWN)){
+
+                if(top<previousCommands.size() && top>=0) textField.setText(previousCommands.get(top++));
+                if(top<0){ top = 0;}
+//                if(top>previousCommands.size()-1)top = previousCommands.size()-1;
+            }
         });
+
+
+
 
     }
 
@@ -124,7 +146,9 @@ public class TerminalController {
         while (!rootEncountered) {
             try {
                 iNode = (INode) sql.retrieveObject(currentNode);
-            } catch (Exception e) {return s.toString();}
+            } catch (Exception e) {
+                return s.toString();
+            }
             dir = (Directory) iNode.getFileReference();
             s.insert(0, "/" + dir.getName());
             currentNode = dir.getContents().get(1).getInodeNumber();
