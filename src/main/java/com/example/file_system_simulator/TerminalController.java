@@ -61,7 +61,6 @@ public class TerminalController {
                 if (Objects.equals(command, "gedit")) {
 
                 }
-                System.out.println(textField.getText());
                 previousCommands.push(command);
                 top = previousCommands.size()-1;
 //                vBox.getChildren().add(vBox.getChildren().size() - 1, new Text("kptries@kptries-IdeaPad-5-15ITL05-Ua:" + command));

@@ -68,11 +68,8 @@ public class GuiController {
 
     public void backPressed(MouseEvent mouseEvent) {
         back.setStyle("-fx-background-color: #2f2f2f;");
-
+        TerminalController.guiCommands("cd ..");
         setCurrent_directory_path();
-
-
-//TODO go to previous directory if possible and fetch the path till now one by one and send it
 
     }
 
