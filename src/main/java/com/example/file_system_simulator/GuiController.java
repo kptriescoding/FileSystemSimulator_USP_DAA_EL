@@ -83,7 +83,7 @@ public class GuiController {
             label.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent event) {
-                    if(current_directory_path.getChildren().indexOf(label)>1){
+                    if(current_directory_path.getChildren().indexOf(label)>0){
                         TerminalController.guiCommands(backSlashCount(current_directory_path.getChildren().size()-current_directory_path.getChildren().indexOf(label)-1));
                         setCurrent_directory_path();
                     }
