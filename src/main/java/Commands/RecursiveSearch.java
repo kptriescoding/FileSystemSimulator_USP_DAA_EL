@@ -7,6 +7,7 @@ import Models.DirContents;
 import Models.Directory;
 import javafx.scene.Parent;
 
+import java.sql.SQLOutput;
 import java.util.Objects;
 
 public class RecursiveSearch {
@@ -48,9 +49,28 @@ public class RecursiveSearch {
     }
         return inode.getiNodeNumber();
     }
+    public String reverseTracePath(SuperNode superNode){
+        if(superNode.getCurrentNode()==2)return "";
+        SqlCommands sql=new SqlCommands();
+        int currentNode=superNode.getCurrentNode();
+        INode iNode;
+        Directory dir;
+        String s= "";
+        boolean rootEncountered=false;
+        while(!rootEncountered){
+            iNode= (INode) sql.retrieveObject(currentNode);
+            dir=(Directory) iNode.getFileReference();
+            s="/"+dir.getName()+s;
+            currentNode=dir.getContents().get(1).getInodeNumber();
+            if(currentNode==2){
+                rootEncountered=true;
+            }
+        }
+        return s;
+    }
     public static void main(String[] args){
         RecursiveSearch recursiveSearch=new RecursiveSearch();
-        System.out.println(recursiveSearch.tracePath(new SuperNode(),"dir1/dir2/dir22/dir23"));
-        System.out.println(recursiveSearch.error);
+        System.out.println(recursiveSearch.reverseTracePath(new SuperNode()));
+//        System.out.println(recursiveSearch.error);
     }
 }

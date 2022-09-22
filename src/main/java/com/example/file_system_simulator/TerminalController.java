@@ -136,7 +136,7 @@ public class TerminalController {
     }
 
     private String reverseTracePath(SuperNode superNode) {
-
+    if(superNode.getCurrentNode()==2)return "/";
         SqlCommands sql = new SqlCommands();
         int currentNode = superNode.getCurrentNode();
         INode iNode;
