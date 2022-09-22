@@ -8,6 +8,7 @@ import JavaFxCustomClasses.DirIcon;
 import JavaFxCustomClasses.FileIcon;
 import Models.DirContents;
 import Models.Directory;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -78,6 +79,18 @@ public class GuiController {
 //        "-fx-border-color: #000000; -fx-border-width: 0.3; -fx-background-color: #424648"
         ArrayList<Label> labels = reverseTracePath(FileSystem.superNode);
         for (Label l : labels) current_directory_path.getChildren().add(l);
+        current_directory_path.getChildren().forEach(label->{
+            label.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    if(current_directory_path.getChildren().indexOf(label)>1){
+                        TerminalController.guiCommands(backSlashCount(current_directory_path.getChildren().size()-current_directory_path.getChildren().indexOf(label)-1));
+                        setCurrent_directory_path();
+                    }
+                }
+            });
+        });
+
     }
 
     private ArrayList<Label> reverseTracePath(SuperNode superNode) {
@@ -112,6 +125,8 @@ public class GuiController {
         return ret;
     }
 
+
+
     private Label createDirLabel(String dirname) {
         //        "-fx-border-color: #000000; -fx-border-width: 0.3; -fx-background-color: #424648"
         Label label = new Label(dirname);
@@ -122,6 +137,14 @@ public class GuiController {
         label.setPadding(new Insets(5, 10, 5, 10));
         label.alignmentProperty().set(Pos.CENTER);
         return label;
+    }
+
+    private String backSlashCount(int no){
+        StringBuilder sb = new StringBuilder();
+        sb.append("cd ");
+        for(int i = 0;i<no;i++) sb.append("../");
+        return sb.toString().substring(0,sb.toString().length()-1);
+
     }
 
 
