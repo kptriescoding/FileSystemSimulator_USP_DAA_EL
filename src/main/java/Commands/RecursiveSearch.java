@@ -50,6 +50,7 @@ public class RecursiveSearch {
         return inode.getiNodeNumber();
     }
     public String reverseTracePath(SuperNode superNode){
+        if(superNode.getCurrentNode()==2)return "";
         SqlCommands sql=new SqlCommands();
         int currentNode=superNode.getCurrentNode();
         INode iNode;
@@ -69,7 +70,6 @@ public class RecursiveSearch {
     }
     public static void main(String[] args){
         RecursiveSearch recursiveSearch=new RecursiveSearch();
-//        System.out.println(recursiveSearch.tracePath(new SuperNode(),"dir1/dir2/dir22/dir23"));
         System.out.println(recursiveSearch.reverseTracePath(new SuperNode()));
 //        System.out.println(recursiveSearch.error);
     }
