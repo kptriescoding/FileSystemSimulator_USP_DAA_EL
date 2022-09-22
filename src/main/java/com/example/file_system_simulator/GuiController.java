@@ -10,6 +10,7 @@ import Models.DirContents;
 import Models.Directory;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
@@ -121,7 +122,8 @@ public class GuiController {
         label.setTextFill(Color.WHITE);
 
         label.setFont(Font.font("ubuntu", FontWeight.BOLD, 14));
-        label.setPadding(new Insets(5, 10, 10, 5));
+        label.setPadding(new Insets(5, 10, 5, 10));
+        label.alignmentProperty().set(Pos.CENTER);
         return label;
     }
 
