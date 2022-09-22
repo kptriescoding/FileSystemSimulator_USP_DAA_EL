@@ -16,6 +16,7 @@ public class Commands {
     private LNK lnk;
     private MV mv;
     private String fileDirectoryPath;
+    private GREP grep;
     public Commands(){
         cd=new CD();
         ls=new LS();
@@ -27,8 +28,21 @@ public class Commands {
         cat=new CAT();
         mv=new MV();
         lnk=new LNK();
+        grep=new GREP();
     }
     public String run(String cmd, SuperNode superNode){
+        cmd=cmd.trim();
+       String[] split= cmd.split("\\|");
+       String prevResponse="";
+       for(int i=0;i<split.length;i++){
+           split[i]=split[i].trim();
+           split[i]+=" "+prevResponse;
+           prevResponse=runCommand(split[i],superNode);
+           System.out.println(prevResponse);
+       }
+       return prevResponse;
+    }
+    public String runCommand(String cmd, SuperNode superNode){
         cmd=cmd.trim();
         String[] split = cmd.split(" ");
         command = split[0];
@@ -73,11 +87,20 @@ public class Commands {
                 if(split.length<3)return "Insufficient Parameters";
                 return mv.execute(superNode,split[1],split[2]);
             }
+            case "grep"->{
+                int i=0,j=0;
+                while(i<2){
+                    if(cmd.charAt(j)==' ') i++;
+                    j++;
+                }
+                split[2]=cmd.substring(j);
+                if(split.length<3)return "Insufficient Parameters";
+                return grep.execute(split[1],split[2]);
+            }
             default -> {
                 return "Error command";
             }
         }
-
     }
     public void saveTextFile(int inodeNumber,String content){
         save.execute(inodeNumber,content);
