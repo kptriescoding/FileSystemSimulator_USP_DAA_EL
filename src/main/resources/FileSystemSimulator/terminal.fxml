@@ -5,55 +5,50 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<ScrollPane fx:id="scrollPane" prefWidth="600.0" style="-fx-background: #380c2a; " vbarPolicy="NEVER" hbarPolicy="NEVER"
-            VBox.vgrow="ALWAYS" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="FileSystemSimulator.TerminalController">
+<ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" prefWidth="600.0" style="-fx-background: #380c2a; " vbarPolicy="NEVER" VBox.vgrow="ALWAYS" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FileSystemSimulator.TerminalController">
     <padding>
-        <Insets left="3.0" right="3.0"/>
+        <Insets left="3.0" right="3.0" />
     </padding>
     <VBox fx:id="vBox" prefHeight="400.0" prefWidth="1000.0" style="-fx-background: #380c2a; ">
 
 
         <HBox fx:id="commands_till_now" VBox.vgrow="ALWAYS">
-            <Label fx:id="system_name" style="-fx-font-weight: bold;" text="dileep@dileep-HP-Laptop-14s-dr1xxx:~$ "
-                   textFill="#4c9906">
+            <Label fx:id="system_name" style="-fx-font-weight: bold;" text="dileep@dileep-HP-Laptop-14s-dr1xxx:~$ " textFill="#4c9906">
                 <font>
-                    <Font name="Ubuntu" size="14.0"/>
+                    <Font name="Ubuntu" size="14.0" />
 
                 </font>
                 <padding>
-                    <Insets bottom="2.0" left="1.0" right="1.0" top="2.0"/>
+                    <Insets bottom="2.0" left="1.0" right="1.0" top="2.0" />
                 </padding>
                 <HBox.margin>
-                    <Insets bottom="1.0" left="1.0" top="1.0"/>
+                    <Insets bottom="1.0" left="1.0" top="1.0" />
                 </HBox.margin>
             </Label>
-            <Label fx:id="present_directory_path" style="-fx-font-weight: bold;" text="/" textFill="#3463a3"
-                   HBox.hgrow="ALWAYS">
+            <Label fx:id="present_directory_path" style="-fx-font-weight: bold;" text="/" textFill="#3463a3" HBox.hgrow="ALWAYS">
                 <font>
-                    <Font name="Ubuntu" size="14.0"/>
+                    <Font name="Ubuntu" size="14.0" />
                 </font>
                 <HBox.margin>
-                    <Insets bottom="1.0" left="1.0" right="1.0" top="1.0"/>
+                    <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                 </HBox.margin>
                 <padding>
-                    <Insets bottom="2.0" left="1.0" top="2.0"/>
+                    <Insets bottom="2.0" left="1.0" top="2.0" />
                 </padding>
 
             </Label>
 
-            <TextField fx:id="textField" onAction="#onTextClick"
-                       style="-fx-text-fill: #d1d1d1; -fx-font-weight: bold; fx-background: #380c2a; -fx-background-color: transparent;">
+            <TextField fx:id="textField" onAction="#onTextClick" style="-fx-text-fill: #d1d1d1; -fx-font-weight: bold; fx-background: #380c2a; -fx-background-color: transparent;">
                 <padding>
-                    <Insets bottom="2.0" right="1.0" top="2.0"/>
+                    <Insets bottom="2.0" right="1.0" top="2.0" />
                 </padding>
                 <HBox.margin>
-                    <Insets bottom="1.0" left="1.0" right="1.0" top="1.0"/>
+                    <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                 </HBox.margin>
             </TextField>
         </HBox>
         <padding>
-            <Insets left="3.0"/>
+            <Insets left="3.0" />
         </padding>
 
     </VBox>
