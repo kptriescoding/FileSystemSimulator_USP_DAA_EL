@@ -2,10 +2,11 @@
 
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox fx:id="vBox" prefHeight="400.0" style="-fx-background-color: #2b2b2b;" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FileSystemSimulator.GuiController">
+<VBox fx:id="vBox" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2b2b2b;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FileSystemSimulator.GuiController">
     <HBox fx:id="current_directory_path" alignment="CENTER_LEFT" prefHeight="30" prefWidth="600" style="-fx-background-color: #161616;">
         <Button fx:id="back" onMouseEntered="#backPressestarted" onMouseExited="#backPressedHover" onMousePressed="#backPressestarted" onMouseReleased="#backPressed" prefHeight="28" style="-fx-background-color: #2f2f2f; -fx-border-color: #ffffff; -fx-border-width: 0.2;" text="back" textAlignment="CENTER" textFill="white">
             <padding>

@@ -6,6 +6,7 @@ import FileSystemSimulator.TerminalController;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import FileSystemSimulator.FileSystem;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ContentDisplay;
@@ -48,6 +49,7 @@ public class FileIcon extends VBox {
         icon.pickOnBoundsProperty().set(true);
         icon.setFitHeight(50);
         icon.setFitWidth(50);
+        this.setPadding(new Insets(4,2,2,2));
 
         TextField editName = new TextField();
         editName.setAlignment(Pos.CENTER);
