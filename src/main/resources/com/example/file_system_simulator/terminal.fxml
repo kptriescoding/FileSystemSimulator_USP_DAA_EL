@@ -42,7 +42,7 @@
 
             </Label>
 
-            <TextField fx:id="textField" onAction="#onTextClick"
+            <TextField fx:id="textField" onAction="#onTextClick" HBox.hgrow="ALWAYS"
                        style="-fx-text-fill: #d1d1d1; -fx-font-weight: bold; fx-background: #380c2a; -fx-background-color: transparent;">
                 <padding>
                     <Insets bottom="2.0" right="1.0" top="2.0"/>
