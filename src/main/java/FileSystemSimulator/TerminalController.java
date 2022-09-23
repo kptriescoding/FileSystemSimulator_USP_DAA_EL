@@ -2,6 +2,7 @@ package FileSystemSimulator;
 
 
 import Database.SqlCommands;
+import JavaFxCustomClasses.GUIRightClickOptions;
 import Models.Directory;
 
 import FileSystem.SuperNode;

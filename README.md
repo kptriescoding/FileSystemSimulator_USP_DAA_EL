@@ -62,25 +62,25 @@ Hello,
 
 
 2. Clone the repo
-   ```bash
+```bash
    git clone https://github.com/kptriescoding/FileSystemSimulator_USP_DAA_EL
-    ```
+  ```
 
 3. Open the project in Intellij and install all the requirements
 
 
 4.  Setup MySQL
-   ```bash
+```bash
    sudo apt-get install sudo apt-get install mysql-server-8.0 mysql-client-core-8.0
    sudo mysql
    ```
 
 
 5. Add new user with superuser capabilities (Replace username and password)
-   ```bash
+```bash
    CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';
    GRANT ALL PRIVILEGES ON *.* TO 'user_name'@'localhost' WITH GRANT OPTION;
-   ```
+  ```
 6. In Intellij go to src/main/java/Database/SqlCommands and change username and password in line 18 and 24 with the ones mentioned above
 
 
@@ -92,9 +92,9 @@ Hello,
 
 
 2. Clone the repo
-   ```bash
+ ```bash
    git clone https://github.com/kptriescoding/FileSystemSimulator_USP_DAA_EL
-    ```
+  ```
 
 3. Open the project in Intellij and install all the requirements
 
@@ -107,7 +107,7 @@ Hello,
 
 
 5. Add new user with superuser capabilities (Replace username and password)
-   ```bash
+```bash
    CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';
    GRANT ALL PRIVILEGES ON *.* TO 'user_name'@'localhost' WITH GRANT OPTION;
    ```

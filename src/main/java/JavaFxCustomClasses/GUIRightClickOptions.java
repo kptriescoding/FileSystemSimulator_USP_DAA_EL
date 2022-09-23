@@ -1,21 +1,24 @@
-//package JavaFxCustomClasses;
-//
-//import com.example.file_system_simulator.TerminalController;
-//import javafx.scene.control.ContextMenu;
-//import javafx.scene.control.MenuItem;
-//
-//public class GUIRightClickOptions extends ContextMenu {
-//    DirectoryRightClickOptions(String name, int inodeNumber){
-//        this.name=name;
-//        this.inodeNumber=inodeNumber;
-//        MenuItem open=new MenuItem("Open " +name);
-//        MenuItem delete=new MenuItem("Delete "+name);
-//        open.setOnAction((ae)->{
-//            TerminalController.guiCommands("cd "+name);
-//        });
-//        delete.setOnAction((ae)->{
-//            TerminalController.guiCommands("rmdir "+name);
-//        });
-//        this.getItems().addAll(open,delete);
-//    }
-//}
+package JavaFxCustomClasses;
+
+import FileSystemSimulator.FileSystem;
+import FileSystemSimulator.TerminalController;
+import javafx.scene.control.ContextMenu;
+import javafx.scene.control.MenuItem;
+
+public class GUIRightClickOptions extends ContextMenu {
+    int numberOfFiles;
+    public GUIRightClickOptions(){
+        MenuItem newFileBtn=new MenuItem("Create new file");
+        MenuItem newFolderBtn=new MenuItem("Create new folder");
+        numberOfFiles=FileSystem.superNode.getNumberofNodes();
+        newFileBtn.setOnAction((ae)->{
+            TerminalController.guiCommands("touch "+ "file"+numberOfFiles);
+            numberOfFiles++;
+        });
+       newFolderBtn.setOnAction((ae)->{
+            TerminalController.guiCommands("mkdir "+"dir"+numberOfFiles);
+            numberOfFiles++;
+        });
+        this.getItems().addAll(newFileBtn,newFolderBtn);
+    }
+}

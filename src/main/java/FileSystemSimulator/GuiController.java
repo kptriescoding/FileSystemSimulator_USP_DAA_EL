@@ -6,6 +6,7 @@ import FileSystem.INode;
 
 import JavaFxCustomClasses.DirIcon;
 import JavaFxCustomClasses.FileIcon;
+import JavaFxCustomClasses.GUIRightClickOptions;
 import Models.DirContents;
 import Models.Directory;
 import javafx.event.EventHandler;
@@ -14,9 +15,11 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuBar;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -28,10 +31,18 @@ import java.util.Objects;
 public class GuiController {
     public Button back;
     public HBox current_directory_path;
+    public VBox vBox;
     @FXML
     private GridPane gridPane;
 
+
+    private GUIRightClickOptions guiRightClickOptions;
+
     public void updateGui() {
+        guiRightClickOptions=new GUIRightClickOptions();
+        vBox.setOnContextMenuRequested(e -> {
+            guiRightClickOptions.show(back,e.getScreenX(),e.getScreenY());
+        });
         if (gridPane.getChildren().size() > 0) {
             gridPane.getChildren().subList(0, gridPane.getChildren().size()).clear();
         }
