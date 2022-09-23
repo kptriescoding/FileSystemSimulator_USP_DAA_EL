@@ -2,6 +2,7 @@ package JavaFxCustomClasses;
 
 import FileSystem.INode;
 import FileSystemSimulator.FileSystem;
+import FileSystemSimulator.GuiController;
 import FileSystemSimulator.TerminalController;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -14,6 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.Priority;
@@ -69,19 +71,16 @@ public class FileIcon extends VBox {
 //
             }
         });
-        this.getChildren().get(0).setOnContextMenuRequested(new EventHandler<ContextMenuEvent>() {
-            @Override
-            public void handle(ContextMenuEvent event) {
+        this.getChildren().get(0).setOnMouseClicked(event -> {
+            if (event.getButton().equals(MouseButton.SECONDARY)) {
+                GuiController.isContextMenuOpen=true;
                 fileRightClickOptions.show(icon,event.getScreenX(),event.getScreenY());
-            }
-        });
-
-        this.getChildren().get(1).setOnMouseClicked(event -> {
-            if(event.getClickCount()==2){
+            } else if (event.getClickCount() == 2) {
                 FileSystem.newTextEditor(inodeNumber,name);
             }
 
         });
+
         this.getChildren().get(0).onMouseEnteredProperty().set(event -> {
             this.setBackground(Background.fill(Color.GREY));
         });

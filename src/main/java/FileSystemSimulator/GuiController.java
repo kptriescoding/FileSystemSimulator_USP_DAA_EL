@@ -9,47 +9,63 @@ import JavaFxCustomClasses.FileIcon;
 import JavaFxCustomClasses.GUIRightClickOptions;
 import Models.DirContents;
 import Models.Directory;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.application.Platform;
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.MenuBar;
+import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import javafx.util.Duration;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Objects;
+import java.util.*;
 
 public class GuiController {
     public Button back;
     public HBox current_directory_path;
     public VBox vBox;
     @FXML
-    private GridPane gridPane;
+    private TilePane tilePane;
 
 
-    private GUIRightClickOptions guiRightClickOptions;
+    public GUIRightClickOptions guiRightClickOptions;
+    public static boolean isContextMenuOpen;
+    public void startScheduler(ContextMenuEvent e) {
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                Platform.runLater(() -> {
+                    if(!isContextMenuOpen)guiRightClickOptions.show(back,e.getScreenX(),e.getScreenY());
+                    isContextMenuOpen=false;
+                });
+            }
+        }, 200);
+    }
+
 
     public void updateGui() {
         guiRightClickOptions=new GUIRightClickOptions();
-        vBox.setOnContextMenuRequested(e -> {
-            guiRightClickOptions.show(back,e.getScreenX(),e.getScreenY());
-        });
-        if (gridPane.getChildren().size() > 0) {
-            gridPane.getChildren().subList(0, gridPane.getChildren().size()).clear();
+
+        vBox.setOnContextMenuRequested(this::startScheduler);
+        if (tilePane.getChildren().size() > 0) {
+            tilePane.getChildren().subList(0, tilePane.getChildren().size()).clear();
         }
         SqlCommands sql = new SqlCommands();
         INode iNode = (INode) sql.retrieveObject(FileSystem.superNode.getCurrentNode());
         Directory curDir = (Directory) iNode.getFileReference();
-        int i = 0, j = 0;
         boolean pathset = false;
         for (DirContents dirContents : curDir.getContents()) {
             if (Objects.equals(dirContents.getName(), ".") || Objects.equals(dirContents.getName(), "..") || Objects.equals(dirContents.getName(), "/")){
@@ -57,15 +73,10 @@ public class GuiController {
                 continue;}
             if (dirContents.getFileType() == 1) {
                 setCurrent_directory_path();
-                gridPane.add(new DirIcon(iNode, dirContents.getName(), dirContents.getInodeNumber(), pathset), j, i);
+                tilePane.getChildren().add(new DirIcon(iNode, dirContents.getName(), dirContents.getInodeNumber(), pathset));
                 pathset = true;
             } else {
-                gridPane.add(new FileIcon(iNode, dirContents.getName(), dirContents.getInodeNumber()), j, i);
-            }
-            j++;
-            if (j == 5) {
-                i++;
-                j = 0;
+                tilePane.getChildren().add(new FileIcon(iNode, dirContents.getName(), dirContents.getInodeNumber()));
             }
         }
     }
@@ -92,13 +103,10 @@ public class GuiController {
         ArrayList<Label> labels = reverseTracePath(FileSystem.superNode);
         for (Label l : labels) current_directory_path.getChildren().add(l);
         current_directory_path.getChildren().forEach(label->{
-            label.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                    if(current_directory_path.getChildren().indexOf(label)>0){
-                        TerminalController.guiCommands(backSlashCount(current_directory_path.getChildren().size()-current_directory_path.getChildren().indexOf(label)-1));
-                        setCurrent_directory_path();
-                    }
+            label.setOnMouseClicked(event -> {
+                if(current_directory_path.getChildren().indexOf(label)>0){
+                    TerminalController.guiCommands(backSlashCount(current_directory_path.getChildren().size()-current_directory_path.getChildren().indexOf(label)-1));
+                    setCurrent_directory_path();
                 }
             });
         });

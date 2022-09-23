@@ -2,6 +2,7 @@ package JavaFxCustomClasses;
 
 import Database.SqlCommands;
 import FileSystem.INode;
+import FileSystemSimulator.GuiController;
 import Models.Directory;
 
 import FileSystemSimulator.TerminalController;
@@ -87,39 +88,32 @@ public class DirIcon extends VBox {
         });
 
 
-//        setContentDisplay(ContentDisplay.TOP);
         this.getChildren().get(0).setOnMouseClicked(event -> {
+            if (event.getButton().equals(MouseButton.SECONDARY)) {
+                GuiController.isContextMenuOpen=true;
+                directoryRightClickOptions.show(icon, event.getScreenX(), event.getScreenY());
+            } else if (event.getClickCount() == 2) {
+                TerminalController.guiCommands("cd " + name);
+                INode inode = parInode;
+                Directory d = (Directory) inode.getFileReference();
 
-        });
-        this.getChildren().get(0).setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                if (event.getButton().equals(MouseButton.SECONDARY)) {
-                    System.out.println("happening");
-                    directoryRightClickOptions.show(icon, event.getScreenX(), event.getScreenY());
-                } else if (event.getClickCount() == 2) {
-                    TerminalController.guiCommands("cd " + name);
-                    INode inode = parInode;
-                    Directory d = (Directory) inode.getFileReference();
-
-                    StringBuilder sb = new StringBuilder();
-                    while (setbit) {
-                        try {
-                            if (d.getName().equals("/")) {
-                                sb.append("/");
-                                break;
-                            }
-
-                            inode = (INode) sql.retrieveObject(d.getContents().get(1).getInodeNumber());
-                            d = (Directory) inode.getFileReference();
-                            sb.append(d.getName());
-                            if (!Objects.equals(d.getName(), "")) sb.append("/");
-                        } catch (Exception e) {
+                StringBuilder sb = new StringBuilder();
+                while (setbit) {
+                    try {
+                        if (d.getName().equals("/")) {
+                            sb.append("/");
                             break;
                         }
+
+                        inode = (INode) sql.retrieveObject(d.getContents().get(1).getInodeNumber());
+                        d = (Directory) inode.getFileReference();
+                        sb.append(d.getName());
+                        if (!Objects.equals(d.getName(), "")) sb.append("/");
+                    } catch (Exception e) {
+                        break;
                     }
-                    System.out.println(sb.reverse().toString());
                 }
+                System.out.println(sb.reverse());
             }
         });
         this.getChildren().get(0).onMouseEnteredProperty().set(event -> {

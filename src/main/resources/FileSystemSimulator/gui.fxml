@@ -30,7 +30,6 @@
 
         </Label>
     </HBox>
-    <GridPane fx:id="gridPane" hgap="10" style="-fx-background-color: #2b2b2b;" vgap="10" xmlns:fx="http://javafx.com/fxml">
-
-    </GridPane>
+    <TilePane fx:id="tilePane" style="-fx-background-color: #2b2b2b;" xmlns:fx="http://javafx.com/fxml" vgap="10" hgap="10" >
+    </TilePane>
 </VBox>
