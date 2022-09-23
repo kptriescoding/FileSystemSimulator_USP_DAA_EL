@@ -1,4 +1,4 @@
-package com.example.file_system_simulator;
+package FileSystemSimulator;
 
 import Database.SqlCommands;
 import FileSystem.SuperNode;
@@ -144,7 +144,7 @@ public class GuiController {
         StringBuilder sb = new StringBuilder();
         sb.append("cd ");
         for(int i = 0;i<no;i++) sb.append("../");
-        return sb.toString().substring(0,sb.toString().length()-1);
+        return sb.substring(0,sb.toString().length()-1);
 
     }
 

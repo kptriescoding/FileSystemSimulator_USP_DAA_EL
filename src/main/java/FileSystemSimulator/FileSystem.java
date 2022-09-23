@@ -1,4 +1,4 @@
-package com.example.file_system_simulator;
+package FileSystemSimulator;
 
 import Commands.Commands;
 import JavaFxCustomClasses.TextEditor;

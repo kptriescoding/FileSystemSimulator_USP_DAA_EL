@@ -1,30 +1,23 @@
 <!-- PROJECT LOGO -->
 <br />
-<p align="center">
-  <a href="https://github.com/World-Konkani-Centre/SCL-2022-BitSlashers/blob/main/README.md">
-    <img src="https://i.ibb.co/0F8YbrS/logo.png" alt="Logo" width="250" height="250">
-  </a>
 
 
-  <h3 align="center">WeGroW</h3>
+  <h1 align="center">File System Simulator</h1>
 
   <p align="center">
-    A single stop solution for fair crop trade
+    A Simple File System Simulator for people wanting to learn some basic linux commands
     <br/>
-    By Team-BitSlashers
+    By 
     <br />
-    <a href="https://github.com/World-Konkani-Centre/SCL-2022-BitSlashers/blob/main/README.md">View Demo</a>
+    <a href="https://github.com/kptriescoding/FileSystemSimulator_USP_DAA_EL/issues">Report Bug</a>
     ·
-    <a href="https://github.com/World-Konkani-Centre/SCL-2022-BitSlashers/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/World-Konkani-Centre/SCL-2022-BitSlashers/issues">Request Feature</a>
+    <a href="https://github.com/kptriescoding/FileSystemSimulator_USP_DAA_EL/issues">Request Feature</a>
   </p>
   
   <p class="text-center mb-3" align="center">
-<a href="https://github.com/World-Konkani-Centre/SCL-2022-BitSlashers/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/18praneeth/sushiksha-website?style=for-the-badge"></a>
-<a href="https://github.com/World-Konkani-Centre/SCL-2022-BitSlashers/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/18praneeth/sushiksha-website?style=for-the-badge"></a>
-<a href="https://github.com/World-Konkani-Centre/SCL-2022-BitSlashers/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/18praneeth/sushiksha-website?style=for-the-badge"></a>
-</p>
+<a href="https://github.com/kptriescoding/FileSystemSimulator_USP_DAA_EL/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/kptriescoding/FileSystemSimulator_USP_DAA_EL?style=for-the-badge"></a>
+<a href="https://github.com/kptriescoding/FileSystemSimulator_USP_DAA_EL/fork"><img alt="GitHub forks" src="https://img.shields.io/github/forks/kptriescoding/FileSystemSimulator_USP_DAA_EL?style=for-the-badge"></a>
+<a href="https://github.com/kptriescoding/FileSystemSimulator_USP_DAA_EL/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/kptriescoding/FileSystemSimulator_USP_DAA_EL?style=for-the-badge"></a>
 </p>
 
 <!-- TABLE OF CONTENTS -->
@@ -43,100 +36,204 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
   </ol>
 </details>
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-Hello, welcome to WeGroW. Extremely glad you’re here. You might have observed farmers bearing huge loss during crop trade due to lack of market knowledge and predominance of intermediaries. Hence we are a single stop solution where farmers meet consumers, aided with analytical insights and regular price visibility.
+Hello, 
 
 ### Built With
-[![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
+[![forthebadge](https://forthebadge.com/images/badges/made-with-java.svg)](https://www.java.com/en/)
 
-<a href="http://www.djangoproject.com/"><img src="https://www.djangoproject.com/m/img/badges/djangopowered126x54.gif" border="0" alt="Powered by Django." title="Powered by Django." /></a>
-
-* [Bootstrap](https://getbootstrap.com)
-* HTML
-* CSS
-* [Python](https://www.python.org/downloads/)
-* [Django](https://www.djangoproject.com/)
+* [Java](https://www.java.com/en/)
+* [JavaFX](https://openjfx.io/)
+* [MySQL](https://www.mysql.com/)
 
 <!-- GETTING STARTED -->
 ## Getting Started
 
 
    
-### Installation
+### Installation - Linux
+
+1. Install Intellij from https://www.jetbrains.com/idea/ 
 
 
-1. Fork and Clone
-    <ol>
-    <li>Fork WeGroW Repo</li>
-    <li>Clone the repo to your computer.</li>
-    </ol>
-
-2. Create a Virtual Environment for the Project
-
-    In Windows
-    ```bash
-    python -m venv venv
-    
-    venv\Scripts\activate
+2. Clone the repo
+   ```bash
+   git clone https://github.com/kptriescoding/FileSystemSimulator_USP_DAA_EL
     ```
 
-    In Ubuntu/MacOS
-    ```bash
-    python -m virtualenv venv
-    
-    source venv/bin/activate
+3. Open the project in Intellij and install all the requirements
+
+
+4.  Setup MySQL
+   ```bash
+   sudo apt-get install sudo apt-get install mysql-server-8.0 mysql-client-core-8.0
+   sudo mysql
+   ```
+
+
+5. Add new user with superuser capabilities (Replace username and password)
+   ```bash
+   CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';
+   GRANT ALL PRIVILEGES ON *.* TO 'user_name'@'localhost' WITH GRANT OPTION;
+   ```
+6. In Intellij go to src/main/java/Database/SqlCommands and change username and password in line 18 and 24 with the ones mentioned above
+
+
+7. Run the main function of FileSystem in package FileSystemSimulator
+
+### Installation - Windows
+
+1. Install Intellij from https://www.jetbrains.com/idea/
+
+
+2. Clone the repo
+   ```bash
+   git clone https://github.com/kptriescoding/FileSystemSimulator_USP_DAA_EL
     ```
-   
-   If you are giving a different name then `venv`, then please mention it in `.gitigonre` first
 
-3. Install all the requirements
+3. Open the project in Intellij and install all the requirements
 
-    ```bash
-    pip install -r requirements.txt
-    ```
-   
-4. Checkout to develop branch
-     ```git
-    git status
-    git pull
-    git branch
-    git checkout develop
-    
-    ```   
 
-5. Make migrations/ Create db.sqlite3
+4.  Setup MySQL
+   ```bash
+   sudo apt-get install sudo apt-get install mysql-server-8.0 mysql-client-core-8.0
+   sudo mysql
+   ```
 
-    ```bash
-    python manage.py makemigrations
-    python manage.py migrate
-    ```
-6. Create a super user.
-    In django if you want to access admin page, you need to create an account first.
-    ```djangotemplate
-    python manage.py createsuperuser
-    ```
-   Then select your username and password.
-   
-7. Run server
-    ```bash
-    python manage.py runserver
-    ```
-8. Do the Development and send us a PR referencing the issue.
- 
- <!-- CONTRIBUTING -->
-## Contributing
 
-Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+5. Add new user with superuser capabilities (Replace username and password)
+   ```bash
+   CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';
+   GRANT ALL PRIVILEGES ON *.* TO 'user_name'@'localhost' WITH GRANT OPTION;
+   ```
+6. In Intellij go to src/main/java/Database/SqlCommands and change username and password in line 18 and 24 with the ones mentioned above
 
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+
+7. Run the main function of FileSystem in package FileSystemSimulator
+
+## Application Working
+
+### Terminal
+
+### GUI
+
+
+## Some Sample Commands Usages
+
+### 1. mkdir
+
+<p> mkdir is used to make a new directory<br/><br/>Usage</p>
+
+   ```bash
+    mkdir dirname
+   ```
+
+### 2. cd
+
+<p> cd is a command can be used to change a directory <br/><br/>Usage</p>
+
+   ```bash
+   cd dirname
+   ```
+### 3. ls
+
+<p> ls command is used to list all files of an directory <br/><br/>Usage</p>
+
+   ```bash
+   ls
+   ```
+<p align="center">or</p>
+
+   ```bash
+   ls dirname
+   ```
+
+### 4. touch
+
+<p> touch is used to create a regular file <br/><br/>Usage</p>
+
+   ```bash
+   touch filename
+   ```
+### 5. cat
+
+<p> cat is used to display contents of a file <br/><br/>Usage</p>
+
+   ```bash
+   cat filename
+   ```
+
+### 6. rmdir
+
+<p> rmdir is used to delete a directory <br/><br/>Usage</p>
+
+   ```bash
+   rmdir filename
+   ```
+
+### 7. rm
+
+<p> rm is used to delete a file <br/><br/>Usage</p>
+
+   ```bash
+   rm file
+   ```
+### 8. lnk
+
+<p> link is used to create shortcuts of a file or directory<br/><br/>Usage</p>
+
+   ```bash
+   lnk srcname destname
+   ```
+
+### 9. mv
+
+<p> mv is used to move a file from one location to another. If the srcname is the same as destname then it is similar to renaming<br/><br/>Usage</p>
+
+   ```bash
+   mv srcname destname
+   ```
+
+### 10. grep
+
+<p> grep can be used for pattern matching <br/><br/>Usage</p>
+
+   ```bash
+   grep pattern text
+   ```
+
+### 11. Traversal through '/', '..', '.'
+
+<p>Multilevel traversal is possible using '/' to specify the path as we go from each outer directory to inner directory. 
+The name for the root folder is '/' which can be accessed from any folder. The parent can be accessed using '..' meanwhile
+the current folder by '.' .This can be used for any command where path is used
+<br/><br/>Some Example Usages </p>
+1. Move to root
+
+   ```bash
+   cd /
+   ```
+2. Make a directory in parent directory
+
+```bash
+mkdir ../dirname
+   ```
+2. Make a in a inner directory from root (Note that all the directory except the outer ones must exist)
+
+```bash
+mkdir /dir1/dir2/dir3/dirname
+   ```
+### 12. Piping
+
+<p> Piping can be used here to send the output of one command as a parameter to the next
+one <br/><br/>Usage (Here the content of the file is given as the 2nd parameter to the grep command) </p>
+
+   ```bash
+   cat filename | grep pattern
+   ```
+## Snapshots

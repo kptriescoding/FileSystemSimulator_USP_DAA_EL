@@ -1,7 +1,7 @@
 package JavaFxCustomClasses;
 
 import FileSystem.INode;
-import com.example.file_system_simulator.FileSystem;
+import FileSystemSimulator.FileSystem;
 import javafx.scene.control.Button;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.image.ImageView;

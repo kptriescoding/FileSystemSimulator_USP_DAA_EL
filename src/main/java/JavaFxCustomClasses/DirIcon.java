@@ -3,7 +3,7 @@ package JavaFxCustomClasses;
 import Database.SqlCommands;
 import FileSystem.INode;
 import Models.Directory;
-import com.example.file_system_simulator.TerminalController;
+import FileSystemSimulator.TerminalController;
 import javafx.scene.control.Button;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.image.ImageView;

@@ -7,7 +7,7 @@
 
 <ScrollPane fx:id="scrollPane" prefWidth="600.0" style="-fx-background: #380c2a; " vbarPolicy="NEVER" hbarPolicy="NEVER"
             VBox.vgrow="ALWAYS" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.file_system_simulator.TerminalController">
+            fx:controller="FileSystemSimulator.TerminalController">
     <padding>
         <Insets left="3.0" right="3.0"/>
     </padding>
