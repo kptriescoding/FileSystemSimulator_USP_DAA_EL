@@ -5,6 +5,8 @@ import FileSystem.INode;
 import FileSystem.SuperNode;
 import Models.DirContents;
 import Models.Directory;
+import Models.File;
+
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -55,6 +57,7 @@ public class MV extends RecursiveSearch{
                 if(validate(destDir.getContents(),dest)) {
                     DirContents content = new DirContents();
                     content.setName(dest);
+                    updateContent(inodeNumber,dest,sql);
                     content.setInodeNumber(inodeNumber);
                     content.setFileType(fileType);
                     destDir.addContents(content);
@@ -78,4 +81,19 @@ public class MV extends RecursiveSearch{
                     return "Directory/File Already exists";
                 }
             }
-        }
+
+    private void updateContent(int inodeNumber, String dest,SqlCommands sql) {
+                INode inode= (INode) sql.retrieveObject(inodeNumber);
+                if(inode.getFileType()==1){
+                    Directory dir=(Directory) inode.getFileReference();
+                    dir.setName(dest);
+                    inode.setFileReference(dir);
+                }
+                else {
+                    File f=(File) inode.getFileReference();
+                    f.setName(dest);
+                    inode.setFileReference(f);
+                }
+                sql.UpdateObject(inode,inodeNumber);
+    }
+}

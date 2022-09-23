@@ -58,8 +58,6 @@ public class TerminalController {
                     clearTerminal();
                     return;
                 }
-                if (Objects.equals(command, "gedit")) {
-                }
                 previousCommands.push(command);
                 top = previousCommands.size()-1;
 //                vBox.getChildren().add(vBox.getChildren().size() - 1, new Text("kptries@kptries-IdeaPad-5-15ITL05-Ua:" + command));
