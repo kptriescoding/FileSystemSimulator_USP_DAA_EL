@@ -88,13 +88,13 @@ public class Commands {
                 return mv.execute(superNode,split[1],split[2]);
             }
             case "grep"->{
+                if(split.length<3)return "Insufficient Parameters";
                 int i=0,j=0;
                 while(i<2){
                     if(cmd.charAt(j)==' ') i++;
                     j++;
                 }
                 split[2]=cmd.substring(j);
-                if(split.length<3)return "Insufficient Parameters";
                 return grep.execute(split[1],split[2]);
             }
             default -> {
