@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
@@ -40,6 +41,7 @@ public class FileIcon extends VBox {
         this.setMaxWidth(80);
         this.setAlignment(Pos.TOP_CENTER);
 
+        FileRightClickOptions fileRightClickOptions = new FileRightClickOptions(name,inodeNumber);
 
         ImageView icon = new ImageView(new File("src/main/java/icons/file-icon.png").toURI().toString());
         icon.setPreserveRatio(true);
@@ -47,9 +49,7 @@ public class FileIcon extends VBox {
         icon.setFitHeight(50);
         icon.setFitWidth(50);
 
-
         TextField editName = new TextField();
-//        editName.disableProperty().set(true);
         editName.setAlignment(Pos.CENTER);
         editName.setStyle("-fx-background-color: transparent; -fx-border-color: transparent; -fx-text-inner-color: white;");
         editName.setText(name);
@@ -65,6 +65,12 @@ public class FileIcon extends VBox {
                 TerminalController.guiCommands("mv" + " " + name + " " + editName.getText());
                 editName.disableProperty().set(true);
 //
+            }
+        });
+        this.getChildren().get(0).setOnContextMenuRequested(new EventHandler<ContextMenuEvent>() {
+            @Override
+            public void handle(ContextMenuEvent event) {
+                fileRightClickOptions.show(icon,event.getScreenX(),event.getScreenY());
             }
         });
 
