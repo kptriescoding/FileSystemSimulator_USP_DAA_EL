@@ -15,13 +15,13 @@ public class SqlCommands {
         try {
             Connection con = DriverManager.getConnection(
                     "jdbc:mysql://localhost:3306/",
-                    "kptries", "password");
+                    "root", "Dileep@09");
             Statement st = con.createStatement();
 
             st.executeUpdate("CREATE DATABASE IF NOT EXISTS FileSystem");
             this.conn=DriverManager.getConnection(
                     "jdbc:mysql://localhost:3306/FileSystem",
-                    "kptries", "password");
+                    "root", "Dileep@09");
             Statement stmt=this.conn.createStatement();
             stmt.executeUpdate("CREATE TABLE IF NOT EXISTS INodeTable (INode INT,File VARBINARY(8000))");
         } catch (SQLException e) {
