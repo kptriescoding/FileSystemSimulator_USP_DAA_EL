@@ -59,7 +59,6 @@ public class TerminalController {
                     return;
                 }
                 if (Objects.equals(command, "gedit")) {
-
                 }
                 previousCommands.push(command);
                 top = previousCommands.size()-1;
@@ -160,7 +159,7 @@ public class TerminalController {
     }
 
     public void clearTerminal() {
-        vBox.getChildren().removeAll();
+        previousCommands.clear();
     }
 
 

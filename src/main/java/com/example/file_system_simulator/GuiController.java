@@ -41,8 +41,9 @@ public class GuiController {
         int i = 0, j = 0;
         boolean pathset = false;
         for (DirContents dirContents : curDir.getContents()) {
-            if (Objects.equals(dirContents.getName(), ".") || Objects.equals(dirContents.getName(), "..") || Objects.equals(dirContents.getName(), "/"))
-                continue;
+            if (Objects.equals(dirContents.getName(), ".") || Objects.equals(dirContents.getName(), "..") || Objects.equals(dirContents.getName(), "/")){
+                setCurrent_directory_path();
+                continue;}
             if (dirContents.getFileType() == 1) {
                 setCurrent_directory_path();
                 gridPane.add(new DirIcon(iNode, dirContents.getName(), dirContents.getInodeNumber(), pathset), j, i);
@@ -51,7 +52,7 @@ public class GuiController {
                 gridPane.add(new FileIcon(iNode, dirContents.getName(), dirContents.getInodeNumber()), j, i);
             }
             j++;
-            if (j == 10) {
+            if (j == 5) {
                 i++;
                 j = 0;
             }
