@@ -2,15 +2,12 @@ package JavaFxCustomClasses;
 
 import Database.SqlCommands;
 import Models.File;
-import com.example.file_system_simulator.FileSystem;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+import FileSystemSimulator.FileSystem;
 import javafx.geometry.Insets;
 import javafx.geometry.NodeOrientation;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import FileSystem.*;
 import javafx.scene.paint.Color;

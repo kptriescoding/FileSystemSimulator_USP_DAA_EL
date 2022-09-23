@@ -1,4 +1,4 @@
-package com.example.file_system_simulator;
+package FileSystemSimulator;
 
 import Commands.Commands;
 import JavaFxCustomClasses.TextEditor;
@@ -15,7 +15,6 @@ public class FileSystem extends Application {
     public static Commands commands;
     public static FXMLLoader fxmlLoaderTerminal;
     public static FXMLLoader fxmlLoaderGUI;
-    public static FXMLLoader fxmlLoaderTextEditor;
     @Override
     public void start(Stage stage) throws IOException {
         superNode=new SuperNode();
@@ -41,7 +40,6 @@ public class FileSystem extends Application {
         textEditor.setTitle(name);
         textEditor.setScene(sceneTextEditor);
         textEditor.show();
-
     }
 
     public static void main(String[] args) {

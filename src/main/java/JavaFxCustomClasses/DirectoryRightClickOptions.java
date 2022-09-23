@@ -1,9 +1,7 @@
 package JavaFxCustomClasses;
 
-import FileSystem.INode;
-import com.example.file_system_simulator.TerminalController;
+import FileSystemSimulator.TerminalController;
 import javafx.scene.control.ContextMenu;
-import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 
 public class DirectoryRightClickOptions extends ContextMenu {

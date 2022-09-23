@@ -24,8 +24,8 @@ tasks.withType(JavaCompile) {
 }
 
 application {
-    mainModule = 'com.example.file_system_simulator'
-    mainClass = 'com.example.file_system_simulator.HelloApplication'
+    mainModule = 'FileSystemSimulator'
+    mainClass = 'FileSystemSimulator.FileSystem'
 }
 
 javafx {

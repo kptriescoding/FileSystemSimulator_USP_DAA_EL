@@ -1,4 +1,4 @@
-package com.example.file_system_simulator;
+package FileSystemSimulator;
 
 
 import Database.SqlCommands;
@@ -8,7 +8,6 @@ import FileSystem.SuperNode;
 import FileSystem.INode;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
-import javafx.geometry.VPos;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
@@ -22,7 +21,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
-import javafx.scene.text.TextFlow;
 
 import java.util.Objects;
 import java.util.Stack;
@@ -57,8 +55,6 @@ public class TerminalController {
                 if (Objects.equals(command, "clear")) {
                     clearTerminal();
                     return;
-                }
-                if (Objects.equals(command, "gedit")) {
                 }
                 previousCommands.push(command);
                 top = previousCommands.size()-1;

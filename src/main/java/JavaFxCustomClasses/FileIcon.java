@@ -1,9 +1,13 @@
 package JavaFxCustomClasses;
 
 import FileSystem.INode;
+<<<<<<< HEAD
 import com.example.file_system_simulator.FileSystem;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+=======
+import FileSystemSimulator.FileSystem;
+>>>>>>> 30bc80bdc3fbd92fbeaee0be4de43be60c761c77
 import javafx.scene.control.Button;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.TextField;

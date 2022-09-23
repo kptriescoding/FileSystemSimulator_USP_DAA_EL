@@ -1,9 +1,9 @@
-module com.example.file_system_simulator {
+module FileSystemSimulator {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.sql;
 
 
-    opens com.example.file_system_simulator to javafx.fxml;
-    exports com.example.file_system_simulator;
+    opens FileSystemSimulator to javafx.fxml;
+    exports FileSystemSimulator;
 }
