@@ -20,29 +20,13 @@
 <a href="https://github.com/kptriescoding/FileSystemSimulator_USP_DAA_EL/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/kptriescoding/FileSystemSimulator_USP_DAA_EL?style=for-the-badge"></a>
 </p>
 
-<!-- TABLE OF CONTENTS -->
-<details open="open">
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-  </ol>
-</details>
+
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-Hello, 
+Hello, this is a simple file simulation where people can learn how to use some of the basic 
+linux commands.
 
 ### Built With
 [![forthebadge](https://forthebadge.com/images/badges/made-with-java.svg)](https://www.java.com/en/)
@@ -58,69 +42,45 @@ Hello,
    
 ### Installation - Linux
 
-1. Install Intellij from https://www.jetbrains.com/idea/ 
-
-
-2. Clone the repo
+1. Install java 
 ```bash
-   git clone https://github.com/kptriescoding/FileSystemSimulator_USP_DAA_EL
-  ```
+   sudo apt update
+   sudo apt install default-jre
+   ```
 
-3. Open the project in Intellij and install all the requirements
-
-
-4.  Setup MySQL
+2. Setup MySQL
 ```bash
    sudo apt-get install sudo apt-get install mysql-server-8.0 mysql-client-core-8.0
    sudo mysql
    ```
 
-
-5. Add new user with superuser capabilities (Replace username and password)
+3. Add new user with superuser capabilities 
 ```bash
    CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';
-   GRANT ALL PRIVILEGES ON *.* TO 'user_name'@'localhost' WITH GRANT OPTION;
+   GRANT ALL PRIVILEGES ON *.* TO 'username'@'localhost' WITH GRANT OPTION;
   ```
-6. In Intellij go to src/main/java/Database/SqlCommands and change username and password in line 18 and 24 with the ones mentioned above
 
-
-7. Run the main function of FileSystem in package FileSystemSimulator
+4. Run the jar file given in the folder using
+```bash
+    java -jar File_System_Simulator.jar
+  ```
 
 ### Installation - Windows
 
-1. Install Intellij from https://www.jetbrains.com/idea/
+1. Install Java from https://www.java.com/en/
 
 
-2. Clone the repo
- ```bash
-   git clone https://github.com/kptriescoding/FileSystemSimulator_USP_DAA_EL
-  ```
+2. Download MySQL (mysql-installer-community-8.0.30.0.msi) server from 
+https://dev.mysql.com/downloads/installer/ (Version)
 
-3. Open the project in Intellij and install all the requirements
+3. Select Microsoft Server only and Execute
 
-
-4.  Setup MySQL
-   ```bash
-   sudo apt-get install sudo apt-get install mysql-server-8.0 mysql-client-core-8.0
-   sudo mysql
-   ```
+4. For Types and Networking and Authentication method do next. In the next section
+add new user with username as 'username' and password as 'password'. Enter the necessary
+root password.
 
 
-5. Add new user with superuser capabilities (Replace username and password)
-```bash
-   CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';
-   GRANT ALL PRIVILEGES ON *.* TO 'user_name'@'localhost' WITH GRANT OPTION;
-   ```
-6. In Intellij go to src/main/java/Database/SqlCommands and change username and password in line 18 and 24 with the ones mentioned above
-
-
-7. Run the main function of FileSystem in package FileSystemSimulator
-
-## Application Working
-
-### Terminal
-
-### GUI
+3.
 
 
 ## Some Sample Commands Usages
@@ -236,4 +196,3 @@ one <br/><br/>Usage (Here the content of the file is given as the 2nd parameter 
    ```bash
    cat filename | grep pattern
    ```
-## Snapshots
