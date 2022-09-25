@@ -80,7 +80,7 @@ add new user with username as 'username' and password as 'password'. Enter the n
 root password.
 
 
-3.
+5.
 
 
 ## Some Sample Commands Usages
