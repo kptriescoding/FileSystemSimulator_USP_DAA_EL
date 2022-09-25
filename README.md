@@ -34,9 +34,11 @@ linux commands.
 * [Java](https://www.java.com/en/)
 * [JavaFX](https://openjfx.io/)
 * [MySQL](https://www.mysql.com/)
-  
+
+### Hardware Requirements
 * RAM-2GB
-*
+* Memory-500 MB
+* HDD/SDD- 4 GB
 
 <!-- GETTING STARTED -->
 ## Getting Started
