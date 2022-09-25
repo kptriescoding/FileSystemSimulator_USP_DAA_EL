@@ -34,6 +34,9 @@ linux commands.
 * [Java](https://www.java.com/en/)
 * [JavaFX](https://openjfx.io/)
 * [MySQL](https://www.mysql.com/)
+  
+* RAM-2GB
+*
 
 <!-- GETTING STARTED -->
 ## Getting Started
