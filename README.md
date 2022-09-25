@@ -78,14 +78,23 @@ linux commands.
 2. Download MySQL (mysql-installer-community-8.0.30.0.msi) server from 
 https://dev.mysql.com/downloads/installer/ (Version)
 
-3. Select Microsoft Server only and Execute
+3. In the select  products to install select Server(Or Default option) and proceed with default options 
 
 4. For Types and Networking and Authentication method do next. In the next section
-add new user with username as 'username' and password as 'password'. Enter the necessary
-root password.
+Enter the new root password and in the add user section add useruser with 
+username as 'username' and password as 'password'. 
 
+5.Now proceed to the next section and after the successfull installation open the MySQL 8.0 Command Line Client
 
-5.
+6.Enter the root password and paste the below command 
+```bash
+   GRANT ALL PRIVILEGES ON . TO 'username'@'localhost';
+  ```
+Note:If the user 'username' doesn't exist type the below command before grating privilages
+```bash
+    CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';
+  ```
+
 
 
 ## Some Sample Commands Usages
