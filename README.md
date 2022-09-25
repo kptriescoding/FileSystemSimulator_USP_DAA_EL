@@ -84,13 +84,13 @@ https://dev.mysql.com/downloads/installer/ (Version)
 Enter the new root password and in the add user section add useruser with 
 username as 'username' and password as 'password'. 
 
-5.Now proceed to the next section and after the successfull installation open the MySQL 8.0 Command Line Client
+5. Now proceed to the next section and after the successfull installation open the MySQL 8.0 Command Line Client
 
-6.Enter the root password and paste the below command 
+6. Enter the root password and paste the below command 
 ```bash
    GRANT ALL PRIVILEGES ON . TO 'username'@'localhost';
   ```
-Note:If the user 'username' doesn't exist type the below command before grating privilages
+ Note: If the user 'username' doesn't exist type the below command before grating privilages
 ```bash
     CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';
   ```
